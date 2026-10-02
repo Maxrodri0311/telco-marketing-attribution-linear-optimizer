@@ -8,7 +8,6 @@ import os
 import tempfile
 import pytest
 import numpy as np
-import pandas as pd
 import polars as pl
 
 from src.domain.entities import (
