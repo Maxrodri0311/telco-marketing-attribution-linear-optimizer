@@ -1,53 +1,58 @@
 -- ==============================================================================
--- Vonage Analytical Lakehouse - PL/pgSQL Procedural Functions & Audit Triggers
--- Target: PostgreSQL 16 Enterprise / Aurora
+-- Vonage Marketing Analytics - CAC Surge & Budget Anomaly Trigger
+-- Target: PostgreSQL 16 PL/pgSQL Event Triggers & Audit Trail
 -- Role: Marketing Data Scientist
--- Features: Transactional Integrity, Batch Cursor Processing & Anomaly Auditing
 -- ==============================================================================
 
-SET search_path TO analytical_lakehouse, public;
+SET search_path TO marketing_analytics, public;
 
--- Audit Ledger for High-Risk Events
-CREATE TABLE IF NOT EXISTS vonage_marketing_data_scientist_bridge_project_anomaly_audit_ledger (
-    audit_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    entity_id VARCHAR(64) NOT NULL,
-    detected_tier VARCHAR(32) NOT NULL,
-    payload_snapshot JSONB NOT NULL,
-    audited_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    acknowledged BOOLEAN NOT NULL DEFAULT FALSE
+CREATE TABLE IF NOT EXISTS marketing_anomaly_audit_log (
+    log_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    lead_id VARCHAR(64) NOT NULL,
+    channel VARCHAR(64) NOT NULL,
+    observed_cost NUMERIC(12, 2) NOT NULL,
+    tenure_days NUMERIC(8, 2) NOT NULL,
+    hazard_rate NUMERIC(10, 5) NOT NULL,
+    anomaly_reason VARCHAR(128) NOT NULL,
+    logged_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_vonage_marketing_data_scientist_bridge_project_audit_unacknowledged 
-    ON vonage_marketing_data_scientist_bridge_project_anomaly_audit_ledger (entity_id, audited_at DESC)
-    WHERE acknowledged = FALSE;
-
--- Procedural Stored Function for Real-Time Event Triage
-CREATE OR REPLACE FUNCTION fn_audit_vonage_marketing_data_scientist_bridge_project_event(
-    p_entity_id VARCHAR(64),
-    p_domain_cluster VARCHAR(32),
-    p_event_data JSONB
-)
-RETURNS UUID
-LANGUAGE plpgsql
-AS $$
+CREATE OR REPLACE FUNCTION fn_detect_marketing_cac_anomaly()
+RETURNS TRIGGER AS $$
 DECLARE
-    v_audit_id UUID;
+    v_channel_avg_cost NUMERIC(12, 2);
 BEGIN
-    INSERT INTO vonage_marketing_data_scientist_bridge_project_anomaly_audit_ledger (
-        entity_id,
-        detected_tier,
-        payload_snapshot
-    ) VALUES (
-        p_entity_id,
-        'REAL_TIME_DISPATCH',
-        p_event_data
-    )
-    RETURNING audit_id INTO v_audit_id;
+    -- Detectar si el costo del lead supera en un 300% el promedio histórico del canal
+    SELECT COALESCE(AVG(total_marketing_cost_usd), 250.0)
+    INTO v_channel_avg_cost
+    FROM vonage_marketing_lead_telemetry
+    WHERE primary_channel = NEW.primary_channel;
 
-    RETURN v_audit_id;
-EXCEPTION
-    WHEN OTHERS THEN
-        RAISE WARNING '[Audit Error] Failed to record audit for entity %: %', p_entity_id, SQLERRM;
-        RETURN NULL;
+    IF NEW.total_marketing_cost_usd > (v_channel_avg_cost * 3.0) AND NOT NEW.is_converted THEN
+        INSERT INTO marketing_anomaly_audit_log (
+            lead_id,
+            channel,
+            observed_cost,
+            tenure_days,
+            hazard_rate,
+            anomaly_reason
+        ) VALUES (
+            NEW.lead_id,
+            NEW.primary_channel,
+            NEW.total_marketing_cost_usd,
+            NEW.tenure_days,
+            NEW.hazard_rate,
+            'COST_PER_LEAD_EXCEEDS_3X_CHANNEL_BASELINE_WITHOUT_CONVERSION'
+        );
+    END IF;
+
+    RETURN NEW;
 END;
-$$;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS trg_audit_marketing_cac_anomaly ON vonage_marketing_lead_telemetry;
+
+CREATE TRIGGER trg_audit_marketing_cac_anomaly
+AFTER INSERT ON vonage_marketing_lead_telemetry
+FOR EACH ROW
+EXECUTE FUNCTION fn_detect_marketing_cac_anomaly();
