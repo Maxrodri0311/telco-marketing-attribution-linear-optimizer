@@ -77,22 +77,21 @@ class PolarsMarketingIngestionAdapter(MarketingDataIngestionProtocol):
         if limit and limit > 0:
             df = df.head(limit)
 
-        profiles: List[B2BLeadSurvivalProfile] = []
-        for row in df.iter_rows(named=True):
-            profile = B2BLeadSurvivalProfile(
-                lead_id=row["lead_id"],
-                company_tier=CompanyTier(row["company_tier"]),
-                region=TargetRegion(row["region"]),
-                weibull_shape_k=float(row["weibull_shape_k"]),
-                weibull_scale_lambda=float(row["weibull_scale_lambda"]),
-                total_marketing_cost=float(row["total_marketing_cost_usd"]),
-                is_converted=bool(row["is_converted"]),
-                tenure_days=float(row["tenure_days"]),
-                activation_ltv_usd=float(row["activation_ltv_usd"])
+        raw_dicts = df.to_dicts()
+        return [
+            B2BLeadSurvivalProfile(
+                lead_id=r["lead_id"],
+                company_tier=CompanyTier(r["company_tier"]),
+                region=TargetRegion(r["region"]),
+                weibull_shape_k=float(r["weibull_shape_k"]),
+                weibull_scale_lambda=float(r["weibull_scale_lambda"]),
+                total_marketing_cost=float(r["total_marketing_cost_usd"]),
+                is_converted=bool(r["is_converted"]),
+                tenure_days=float(r["tenure_days"]),
+                activation_ltv_usd=float(r["activation_ltv_usd"])
             )
-            profiles.append(profile)
-
-        return profiles
+            for r in raw_dicts
+        ]
 
 
 # ============================================================================
