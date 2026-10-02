@@ -1,6 +1,6 @@
 @echo off
 echo ================================================================================
-echo   VONAGE B2B MARKETING ATTRIBUTION & LINEAR OPTIMIZATION ENGINE
+echo   VONAGE B2B MARKETING ATTRIBUTION AND LINEAR OPTIMIZATION ENGINE
 echo   Automated Execution, Verification, Benchmarks and Quality Guards
 echo ================================================================================
 echo.
@@ -32,7 +32,7 @@ python src/core_engine.py
 if %ERRORLEVEL% NEQ 0 (echo [ERROR] Core engine failed && exit /b %ERRORLEVEL%)
 
 echo.
-echo [4/5] Running Automated Mathematical & Invariant Pytest Suite...
+echo [4/5] Running Automated Mathematical and Invariant Pytest Suite...
 python -m pytest tests/ -v
 if %ERRORLEVEL% NEQ 0 (echo [ERROR] Pytest suite failed && exit /b %ERRORLEVEL%)
 

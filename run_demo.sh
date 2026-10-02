@@ -2,27 +2,35 @@
 set -e
 
 echo "================================================================================"
-echo "  vonage-finance-linear-optimization-engine"
-echo "  Automated Linux/macOS Execution & Benchmark Runner"
+echo "  VONAGE B2B MARKETING ATTRIBUTION & LINEAR OPTIMIZATION ENGINE"
+echo "  Automated Linux/macOS Execution, Benchmarks & Quality Guards"
 echo "================================================================================"
 echo ""
 
-echo "[1/4] Generating Calibrated Stochastic Telemetry..."
+echo "[1/5] Verifying Static Quality, Security and Leaks Guards..."
+python scripts/validate_no_credentials.py
+python scripts/validate_no_internal_leaks.py
+python scripts/validate_sql_complexity.py
+python scripts/validate_byte_budget.py
+python scripts/validate_dockerfile_production.py
+
+echo ""
+echo "[2/5] Synthesizing Calibrated B2B Marketing Telemetry (50,000 records)..."
 python src/data_generator.py --records 50000
 
 echo ""
-echo "[2/4] Executing Executive Delivery Interface..."
-python src/interface.py
+echo "[3/5] Executing Decoupled Optimization Engine (SciPy HiGHS)..."
+python src/core_engine.py
 
 echo ""
-echo "[3/4] Running Automated Pytest Invariant Suite..."
+echo "[4/5] Running Automated Mathematical & Invariant Pytest Suite..."
 python -m pytest tests/ -v
 
 echo ""
-echo "[4/4] Executing Latency & Memory SLA Profiler..."
+echo "[5/5] Executing Latency SLA and Peak Heap Memory Benchmark (30 iterations)..."
 python tests/benchmark.py
 
 echo ""
 echo "================================================================================"
-echo "  [SUCCESS] All Mathematical Invariants and Latency SLAs Verified!"
+echo "  [SUCCESS] All Stages, Invariants, Quality Guards and Benchmarks Passed!"
 echo "================================================================================"
