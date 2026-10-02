@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vonage-finance-linear-optimization-engine"
+version = "0.1.0"
+description = "Enterprise B2B marketing budget & attribution engine for Vonage CPaaS. Combines Weibull survival lifecycle dynamics with constrained SciPy HiGHS linear programming and explainable FastAPI inference to optimize multi-channel LTV under strict CAC caps."
+authors = [
+    { name = "Maximiliano Rodriguez", email = "maxrodri0311@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.110.0",
+    "uvicorn>=0.28.0",
+    "pydantic>=2.6.0",
+    "polars>=0.20.0",
+    "duckdb>=0.10.0",
+    "scipy>=1.12.0",
+    "numpy>=1.26.0",
+    "pyarrow>=14.0.0",
+    "httpx>=0.27.0",
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0"
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::UserWarning"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
