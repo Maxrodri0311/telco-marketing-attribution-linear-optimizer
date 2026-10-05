@@ -1,6 +1,6 @@
 """
 src/data_generator.py - Calibrated Stochastic Domain Data Generator.
-Physics: B2B Marketing Attribution & Survival Lifecycle Analytics for Vonage CPaaS.
+Physics: B2B Marketing Attribution & Survival Lifecycle Analytics for Telecom & Cloud Communications Practice CPaaS.
 Vectorized columnar generation via Polars with zero toy placeholders.
 """
 
@@ -19,10 +19,10 @@ def generate_domain_dataset(
     seed: int = 42,
 ) -> pl.DataFrame:
     """
-    Sintetiza telemetria estocastica de atribucion y ciclo de vida de leads B2B de Vonage.
+    Sintetiza telemetria estocastica de atribucion y ciclo de vida de leads B2B de Telecom & Cloud Communications Practice.
     Modela parametros de supervivencia Weibull h(t) y costos por canal publicitario.
     """
-    print(f"[*] [Data Generator] Simulating {num_records:,} calibrated B2B marketing lead records for Vonage...")
+    print(f"[*] [Data Generator] Simulating {num_records:,} calibrated B2B marketing lead records for Telecom & Cloud Communications Practice...")
     start_time = time.time()
     rng = np.random.default_rng(seed)
 
@@ -162,7 +162,7 @@ def generate_domain_dataset(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Calibrated Stochastic B2B Marketing Data Generator for Vonage.")
+    parser = argparse.ArgumentParser(description="Calibrated Stochastic B2B Marketing Data Generator for Telecom & Cloud Communications Practice.")
     parser.add_argument("--records", type=int, default=50000)
     parser.add_argument("--output", type=str, default="data/raw_dataset.parquet")
     parser.add_argument("--seed", type=int, default=42)

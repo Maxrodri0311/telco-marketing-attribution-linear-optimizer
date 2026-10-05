@@ -1,5 +1,5 @@
 """
-src/core_engine.py - Core Algorithmic & Optimization Engine for Vonage CPaaS Marketing.
+src/core_engine.py - Core Algorithmic & Optimization Engine for Telecom & Cloud Communications Practice CPaaS Marketing.
 Implements Constrained Linear Programming (SciPy HiGHS) with Dual Shadow Price XAI.
 Strictly decoupled via Dependency Inversion Principle (DIP).
 """
@@ -347,7 +347,7 @@ def create_engine(data_path: str = "data/raw_dataset.parquet") -> DomainAnalytic
 # ============================================================================
 
 def create_default_optimization_request(total_budget: float = 2500000.0) -> BudgetOptimizationRequest:
-    """Genera la especificacion de presupuesto predeterminada de Vonage CPaaS."""
+    """Genera la especificacion de presupuesto predeterminada de Telecom & Cloud Communications Practice CPaaS."""
     constraints = [
         ChannelConstraint(
             channel=MarketingChannel.DEVREL_HACKATHONS,
@@ -417,7 +417,7 @@ if __name__ == "__main__":
     comparison = OptimizationComparisonService.compare_lp_vs_heuristic(request, result)
 
     print("\n" + "=" * 80)
-    print("  VONAGE CPaaS: B2B MARKETING ATTRIBUTION & LINEAR PROGRAMMING SOLVER (HiGHS)")
+    print("  Telecom & Cloud Communications Practice CPaaS: B2B MARKETING ATTRIBUTION & LINEAR PROGRAMMING SOLVER (HiGHS)")
     print("=" * 80)
     print(f" Run ID                     : {result.run_id}")
     print(f" Solver Optimal             : {result.is_optimal} (Status: {result.solver_status_code})")

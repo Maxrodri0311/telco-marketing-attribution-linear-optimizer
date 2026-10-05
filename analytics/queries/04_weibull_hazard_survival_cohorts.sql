@@ -1,5 +1,5 @@
 -- ==============================================================================
--- Vonage Marketing Data Science - Weibull Survival Hazard Distribution
+-- Telecom & Cloud Communications Practice Marketing Data Science - Weibull Survival Hazard Distribution
 -- Target: Snowflake SQL / PostgreSQL 16
 -- Mathematical Logic: Kaplan-Meier Non-Parametric & Weibull Continuous Hazard
 -- ==============================================================================

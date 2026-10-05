@@ -1,5 +1,5 @@
 -- ==============================================================================
--- Vonage Marketing Analytics - Continuous Statistical Rollup Mart
+-- Telecom & Cloud Communications Practice Marketing Analytics - Continuous Statistical Rollup Mart
 -- Target: PostgreSQL 16 Materialized Views & Statistical Windowing
 -- Role: Marketing Data Scientist
 -- Features: 7d Rolling CAC Velocity, Conversion Deciles & Multi-Channel ROI

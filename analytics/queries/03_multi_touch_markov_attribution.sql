@@ -1,5 +1,5 @@
 -- ==============================================================================
--- Vonage Marketing Data Science - Multi-Touch Markov Attribution & Removal Effects
+-- Telecom & Cloud Communications Practice Marketing Data Science - Multi-Touch Markov Attribution & Removal Effects
 -- Target: Snowflake SQL / PostgreSQL 16
 -- Mathematical Logic: Absorbing Markov Chains & Removal Effect Multipliers
 -- ==============================================================================

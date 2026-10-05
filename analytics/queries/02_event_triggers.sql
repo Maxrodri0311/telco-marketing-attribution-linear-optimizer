@@ -1,5 +1,5 @@
 -- ==============================================================================
--- Vonage Marketing Analytics - CAC Surge & Budget Anomaly Trigger
+-- Telecom & Cloud Communications Practice Marketing Analytics - CAC Surge & Budget Anomaly Trigger
 -- Target: PostgreSQL 16 PL/pgSQL Event Triggers & Audit Trail
 -- Role: Marketing Data Scientist
 -- ==============================================================================

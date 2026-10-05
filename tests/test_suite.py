@@ -1,7 +1,7 @@
 """
 tests/test_suite.py - Mathematical Invariants & Architecture Quality Suite.
 Validates 100% of mathematical invariants, LP solver feasibility, XAI dual shadow prices,
-and Dependency Inversion Principle (DIP) in-memory mocks for Vonage Marketing Data Science.
+and Dependency Inversion Principle (DIP) in-memory mocks for Telecom & Cloud Communications Practice Marketing Data Science.
 """
 
 import os

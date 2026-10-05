@@ -1,5 +1,5 @@
 -- ==============================================================================
--- Vonage Marketing Data Science - Longitudinal Lead Cohort & Survival SQL
+-- Telecom & Cloud Communications Practice Marketing Data Science - Longitudinal Lead Cohort & Survival SQL
 -- Target: Snowflake SQL / PostgreSQL 16
 -- Features: Multi-Touch Progression, Time-to-Activation & Retention Deciles
 -- ==============================================================================

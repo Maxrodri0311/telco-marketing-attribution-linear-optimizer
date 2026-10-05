@@ -1,6 +1,6 @@
 @echo off
 echo ================================================================================
-echo   VONAGE B2B MARKETING ATTRIBUTION AND LINEAR OPTIMIZATION ENGINE
+echo   Telecom & Cloud Communications Practice B2B MARKETING ATTRIBUTION AND LINEAR OPTIMIZATION ENGINE
 echo   Automated Execution, Verification, Benchmarks and Quality Guards
 echo ================================================================================
 echo.

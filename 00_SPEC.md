@@ -1,15 +1,15 @@
-# 📐 SPEC & BLUEPRINT: Vonage CPaaS B2B Marketing Attribution & Linear Optimization Engine
+# 📐 SPEC & BLUEPRINT: Telecom & Cloud Communications Practice CPaaS B2B Marketing Attribution & Linear Optimization Engine
 
-**Target Enterprise:** Vonage (Cloud Communications / CPaaS) | **Target Role:** Marketing Data Scientist  
+**Target Enterprise:** Telecom & Cloud Communications Practice (Cloud Communications / CPaaS) | **Target Role:** Marketing Data Scientist  
 **Delivery Paradigm:** `EXPLAINABLE_AI_INFERENCE` (FastAPI + OpenAPI + Dual Shadow Price XAI)  
 **Core Algorithm:** `LINEAR_PROGRAMMING` (SciPy HiGHS Simplex/Interior Point)  
-**Repository Name:** `vonage-finance-linear-optimization-engine`  
+**Repository Name:** `telco-marketing-attribution-linear-optimizer`  
 
 ---
 
 ## 🏛️ 1. The Core Business Bottleneck
 
-Vonage allocates tens of millions of dollars annually across diverse B2B marketing channels (`DevRel & Hackathons`, `Paid Search Core`, `Content & Technical SEO`, `Targeted Outbound`, `Programmatic Display`, and `Partner Ecosystem`) to acquire enterprise developers and API accounts.
+Telecom & Cloud Communications Practice allocates tens of millions of dollars annually across diverse B2B marketing channels (`DevRel & Hackathons`, `Paid Search Core`, `Content & Technical SEO`, `Targeted Outbound`, `Programmatic Display`, and `Partner Ecosystem`) to acquire enterprise developers and API accounts.
 
 ### Traditional Attribution Failures:
 1. **Static / Last-Touch Heuristics Ignore Temporal Survival:** Conventional multi-touch attribution (MTA) models treat conversion decisions as instantaneous. In B2B CPaaS, developers evaluate documentation, run proof-of-concept (PoC) tests, and navigate buying committees over 14 to 90 days. Static models over-attribute value to low-lift last-click channels (e.g., Branded Search) while systematically starving high-LTV top-of-funnel channels (DevRel, Technical Documentation).

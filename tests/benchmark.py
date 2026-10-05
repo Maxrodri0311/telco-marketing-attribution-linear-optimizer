@@ -93,7 +93,7 @@ def run_quantitative_benchmarks(iterations: int = 30, num_records: int = 10000):
         # Report & Verification
         # -------------------------------------------------------------
         print("\n" + "=" * 74)
-        print("  VONAGE MARKETING LINEAR OPTIMIZATION ENGINE - QUANTITATIVE BENCHMARK")
+        print("  Telecom & Cloud Communications Practice MARKETING LINEAR OPTIMIZATION ENGINE - QUANTITATIVE BENCHMARK")
         print("=" * 74)
         print(f"  Dataset Population       : {num_records:,} historical lead observations")
         print(f"  Profiling Iterations     : {iterations} passes")

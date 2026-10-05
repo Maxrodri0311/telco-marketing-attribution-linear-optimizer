@@ -1,5 +1,5 @@
 -- ==============================================================================
--- Vonage Marketing Data Science - Enterprise B2B Telemetry Schema
+-- Telecom & Cloud Communications Practice Marketing Data Science - Enterprise B2B Telemetry Schema
 -- Target: PostgreSQL 16 Enterprise / Snowflake Compatible
 -- Role: Marketing Data Scientist
 -- Architecture: Time-Series Range Partitioning & BRIN Indexing

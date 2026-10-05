@@ -1,5 +1,5 @@
 """
-src/domain/entities.py - Modelos de Dominio Puros para Vonage Marketing Data Science.
+src/domain/entities.py - Modelos de Dominio Puros para Telecom & Cloud Communications Practice Marketing Data Science.
 Estructuras inmutables y tipadas para Atribucion Multi-Touch, Supervivencia B2B y Optimizacion Lineal.
 Cero dependencias externas de I/O o persistencia (Regla DIP).
 """

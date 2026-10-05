@@ -1,6 +1,6 @@
 """
 src/interface.py - FastAPI Microservice & OpenAPI Engine (EXPLAINABLE_AI_INFERENCE Paradigm).
-Inference, Linear Optimization, and XAI Marginal Attribution API for Vonage CPaaS.
+Inference, Linear Optimization, and XAI Marginal Attribution API for Telecom & Cloud Communications Practice CPaaS.
 """
 
 import sys
@@ -32,7 +32,7 @@ from src.core_engine import (
 )
 
 app = FastAPI(
-    title="Vonage CPaaS: B2B Marketing Attribution & XAI Optimization Engine",
+    title="Telecom & Cloud Communications Practice CPaaS: B2B Marketing Attribution & XAI Optimization Engine",
     description=(
         "Enterprise decision support API powered by Constrained Linear Programming (SciPy HiGHS) "
         "and Weibull Survival Analytics. Optimizes multi-channel quarterly marketing budget allocation "
@@ -55,7 +55,7 @@ explainer = VonageAttributionExplainer()
 
 class HealthResponse(BaseModel):
     status: str = "healthy"
-    service: str = "vonage-marketing-attribution-engine"
+    service: str = "telco-marketing-marketing-attribution-engine"
     version: str = "1.0.0"
     paradigm: str = "EXPLAINABLE_AI_INFERENCE"
 
